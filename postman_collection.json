@@ -1,0 +1,227 @@
+{
+  "info": {
+    "name": "Sports Venue Booking API",
+    "description": "API collection for Sports Venue Availability & Booking Service\n\nNote: Sport codes must be from the external API (https://stapubox.com/sportslist/)\nAvailable sport codes:\n- 7020104 (badminton)\n- 7020111 (basketball)\n- 7031809 (cricket)\n- 7061509 (football)\n- 7200514 (tennis)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Venues",
+      "item": [
+        {
+          "name": "Create Venue",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Central Football Ground\",\n  \"location\": \"123 Sports Street, City\",\n  \"sportCode\": \"7061509\",\n  \"description\": \"Professional football ground with artificial turf\",\n  \"capacity\": 22\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/venues",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues"]
+            }
+          }
+        },
+        {
+          "name": "Get All Venues",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/venues",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues"]
+            }
+          }
+        },
+        {
+          "name": "Get Venue by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/venues/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Venue",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/venues/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slots",
+      "item": [
+        {
+          "name": "Create Slot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slotDate\": \"2024-01-20\",\n  \"startTime\": \"10:00:00\",\n  \"endTime\": \"11:00:00\",\n  \"price\": 500.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/venues/1/slots",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues", "1", "slots"]
+            }
+          }
+        },
+        {
+          "name": "Get Slots by Venue",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/venues/1/slots",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues", "1", "slots"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Availability",
+      "item": [
+        {
+          "name": "Get Available Venues",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/venues/available?date=2024-01-20&startTime=10:00:00&endTime=11:00:00&sportCode=7061509",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["venues", "available"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2024-01-20"
+                },
+                {
+                  "key": "startTime",
+                  "value": "10:00:00"
+                },
+                {
+                  "key": "endTime",
+                  "value": "11:00:00"
+                },
+                {
+                  "key": "sportCode",
+                  "value": "7061509",
+                  "description": "Sport codes from API: 7020104 (badminton), 7020111 (basketball), 7031809 (cricket), 7061509 (football), 7200514 (tennis)"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slotId\": 1,\n  \"customerName\": \"John Doe\",\n  \"customerEmail\": \"john.doe@example.com\",\n  \"customerPhone\": \"+1234567890\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings"]
+            }
+          }
+        },
+        {
+          "name": "Get Booking by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/bookings/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get All Bookings",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:8080/bookings/1/cancel",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings", "1", "cancel"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
