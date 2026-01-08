@@ -12,3 +12,4 @@ public interface SportRepository extends JpaRepository<Sport, Long> {
     boolean existsByCode(String code);
 }
 
+

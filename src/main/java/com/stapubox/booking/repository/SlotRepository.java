@@ -48,3 +48,4 @@ public interface SlotRepository extends JpaRepository<Slot, Long> {
     Optional<Slot> findAvailableSlotForBooking(@Param("slotId") Long slotId);
 }
 
+

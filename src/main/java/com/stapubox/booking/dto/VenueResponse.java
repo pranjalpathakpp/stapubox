@@ -21,3 +21,4 @@ public class VenueResponse {
     private LocalDateTime updatedAt;
 }
 
+
